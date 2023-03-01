@@ -81,4 +81,4 @@ jobs:
       - name: Build
         run: cargo build --workspace --tests --locked
       - name: Test
-        run: cargo test --locked
+        run: cargo test --workspace --locked
