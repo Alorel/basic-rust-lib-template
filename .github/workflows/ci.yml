@@ -1,7 +1,25 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - master
+      - main
+    paths-ignore:
+      - .github/CODE_OF_CONDUCT.md
+      - .github/CODEOWNERS
+      - .github/dependabot.yml
+      - .github/FUNDING.yml
+      - LICENSE
+      - .gitignore
   pull_request:
+    paths-ignore:
+      - .github/CODE_OF_CONDUCT.md
+      - .github/CODEOWNERS
+      - .github/dependabot.yml
+      - .github/FUNDING.yml
+      - LICENSE
+      - .gitignore
   schedule:
     - cron: "0 5 * * 1,3,6"
 
