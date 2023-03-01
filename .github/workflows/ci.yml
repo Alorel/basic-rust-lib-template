@@ -57,6 +57,7 @@ jobs:
         toolchain:
           - stable
           - nightly
+          - 1.56.0 # min supported by 2021 edition
     steps:
       - name: Checkout
         uses: actions/checkout@v3
