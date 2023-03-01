@@ -5,7 +5,7 @@ name = "rs-lib-template-repo"
 version = "0.1.0"
 edition = "2021"
 publish = false
-#rust-version = "0.69.420"
+rust-version = "1.56.0"
 authors = [
   "Alorel <amolc@pm.me>",
 ]
