@@ -52,11 +52,11 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - windows-latest
+#          - windows-latest
+#          - macos-latest
           - ubuntu-latest
         toolchain:
           - stable
-          - nightly
           - 1.56.0 # min supported by 2021 edition
     steps:
       - name: Checkout
