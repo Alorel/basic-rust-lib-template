@@ -3,7 +3,13 @@ ignore = ["Cargo.lock"]
 cargo_generate_version = ">=0.9.0"
 
 [conditional.within_cargo_project]
-ignore = [".idea"]
+ignore = [
+  ".idea",
+  ".github",
+  ".gitattributes",
+  ".gitignore",
+  "LICENSE",
+]
 
 [placeholders.rust_version]
 type = "string"
