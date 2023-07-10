@@ -1,16 +1,16 @@
 [package]
-name = "{{project-name}}"
+name = "{{crate_name}}"
 version = "0.1.0"
 edition = "2021"
 publish = false
-rust-version = "1.56.0"
+rust-version = "{{rust_version}}"
 authors = [
   "{{authors}}",
 ]
 license = "Apache-2.0"
 readme = "README.md"
 #description = "XXXXXXXXXXXXXXX"
-#repository = "https://github.com/Alorel/{{project-name}}"
+#repository = "https://github.com/Alorel/{{crate_name}}-rs"
 keywords = []
 categories = []
 include = [
@@ -18,9 +18,19 @@ include = [
   "Cargo.toml",
 ]
 
+{% if proc_macro %}
+[lib]
+proc-macro = true
+{% endif %}
+
 [features]
 
 [dependencies]
+{% if proc_macro %}
+proc-macro2 = "1"
+syn = "2"
+quote = "1"
+{% endif %}
 
 [package.metadata.docs.rs]
 all-features = true
