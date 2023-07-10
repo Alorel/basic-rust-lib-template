@@ -4,9 +4,16 @@
 #![warn(missing_docs)]
 #![cfg_attr(doc_cfg, feature(doc_cfg))]
 
-/// # Returns
-///
-/// Always false :(
+{% if proc_macro %}
+use proc_macro::TokenStream as BaseTokenStream;
+use syn::{parse_macro_input, DeriveInput};
+
+#[proc_macro_derive(Foo, attributes(foo))]
+pub fn derive_potatoes(input: BaseTokenStream) -> BaseTokenStream {
+  todo!()
+}
+{% else %}
 pub const fn take_over_the_world() -> bool {
     false
 }
+{% endif %}
