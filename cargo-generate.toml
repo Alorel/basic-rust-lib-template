@@ -1,0 +1,11 @@
+[template]
+ignore = ["Cargo.lock"]
+
+[conditional.'within_cargo_project == true']
+ignore = [
+  ".idea/runConfigurations/Build.xml",
+  ".idea/runConfigurations/Clippy.xml",
+  ".idea/runConfigurations/Clippy__fix.xml",
+  ".idea/runConfigurations/Fmt.xml",
+  ".idea/runConfigurations/Test.xml",
+]

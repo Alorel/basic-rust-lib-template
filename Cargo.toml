@@ -1,16 +1,16 @@
 [package]
-name = "rs-lib-template-repo"
+name = "{{project-name}}"
 version = "0.1.0"
 edition = "2021"
 publish = false
 rust-version = "1.56.0"
 authors = [
-  "Alorel <amolc@pm.me>",
+  "{{authors}}",
 ]
 license = "Apache-2.0"
 readme = "README.md"
 #description = "XXXXXXXXXXXXXXX"
-#repository = "https://github.com/Alorel/XXX"
+#repository = "https://github.com/Alorel/{{project-name}}"
 keywords = []
 categories = []
 include = [
