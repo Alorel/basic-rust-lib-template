@@ -11,6 +11,7 @@ on:
       - .github/dependabot.yml
       - .github/FUNDING.yml
       - LICENSE
+      - cargo-generate.toml
       - .gitignore
   pull_request:
     paths-ignore:
@@ -19,6 +20,7 @@ on:
       - .github/dependabot.yml
       - .github/FUNDING.yml
       - LICENSE
+      - cargo-generate.toml
       - .gitignore
   schedule:
     - cron: "0 5 * * 1,3,6"
@@ -46,7 +48,7 @@ jobs:
       - name: Fmt
         run: cargo fmt --check
       - name: Clippy
-        run
+        run: cargo clippy -workspace --tests --all-features
   test:
     name: Rust ${{matrix.toolchain}} on ${{matrix.os}}
     runs-on: ${{matrix.os}}
