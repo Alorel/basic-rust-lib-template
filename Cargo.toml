@@ -7,31 +7,44 @@ rust-version = "{{rust_version}}"
 authors = [
   "{{authors}}",
 ]
-license = "Apache-2.0"
+{% if license != "skip" %}
+license = "{{license}}"
+{% endif %}
 readme = "README.md"
-#description = "XXXXXXXXXXXXXXX"
-#repository = "https://github.com/Alorel/{{crate_name}}-rs"
+{% if description == "<<fill later>>" %}
+#description = "TODO"
+{% else %}
+description = "{{ description }}"
+{% endif %}
+repository = "https://github.com/{{github_name}}/{{crate_name}}-rs"
 keywords = []
 categories = []
 include = [
   "src/",
   "Cargo.toml",
 ]
-
-{% if proc_macro %}
+{% if proc_macro and within_cargo_project or workspace == false %}
 [lib]
 proc-macro = true
 {% endif %}
-
 [features]
 
 [dependencies]
-{% if proc_macro %}
+{% if proc_macro and workspace and within_cargo_project %}
+proc-macro2 = {workspace = true}
+syn = {workspace = true}
+quote = {workspace = true}
+{% else if proc_macro and workspace == false %}
 proc-macro2 = "1"
 syn = "2"
 quote = "1"
 {% endif %}
-
+{% if proc_macro and workspace and within_cargo_project == false %}
+[workspace.dependencies]
+proc-macro2 = "1"
+syn = "2"
+quote = "1"
+{% endif %}
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = [
