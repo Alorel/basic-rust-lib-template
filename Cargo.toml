@@ -7,9 +7,7 @@ rust-version = "{{rust_version}}"
 authors = [
   "{{authors}}",
 ]
-{% if license != "skip" %}
-license = "{{license}}"
-{% endif %}
+license = "Apache-2.0"
 readme = "README.md"
 {% if description == "<<fill later>>" %}
 #description = "TODO"

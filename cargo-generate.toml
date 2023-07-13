@@ -17,9 +17,6 @@ ignore = ["src/main.rs"]
 [conditional.'crate_type == "bin"']
 ignore = ["src/lib.rs"]
 
-[conditional.'license == "skip"']
-ignore = ["LICENSE"]
-
 [placeholders.github_name]
 type = "string"
 prompt = "GitHub username"
@@ -45,11 +42,6 @@ type = "bool"
 prompt = "Is this part of a workspace?"
 default = true
 
-[placeholders.license]
-type = "string"
-prompt = "License"
-choices = ["Apache-2.0", "skip"]
-
-[conditional.'license != "skip"'.placeholders.license_name]
+[conditional.'within_cargo_project == false'.placeholders.license_name]
 type = "string"
 prompt = "Name for the license"
