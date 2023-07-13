@@ -1,8 +1,3 @@
-{% if crate_type_deep == "workspace-root" %}
-[workspace]
-members = []
-{% endif %}
-
 [package]
 name = "{{crate_name}}"
 version = "0.1.0"
@@ -14,12 +9,8 @@ authors = [
 ]
 license = "Apache-2.0"
 readme = "README.md"
-{% if description == "<<fill later>>" %}
-# description = "TODO"
-{% else %}
-description = "{{description}}"
-{% endif %}
-repository = "https://github.com/{{github_name}}/{{crate_name}}-rs"
+#description = "XXXXXXXXXXXXXXX"
+#repository = "https://github.com/Alorel/{{crate_name}}-rs"
 keywords = []
 categories = []
 include = [
@@ -27,26 +18,18 @@ include = [
   "Cargo.toml",
 ]
 
-{% if crate_type_deep == "proc-macro" %}
+{% if proc_macro %}
 [lib]
 proc-macro = true
 {% endif %}
 
 [features]
-default = []
 
 [dependencies]
-{% if crate_type_deep == "proc-macro" %}
+{% if proc_macro %}
 proc-macro2 = "1"
-quote = "1"
 syn = "2"
-{% else if crate_type_deep == "macro-within-workspace" %}
-proc-macro2 = {workspace = true}
-quote = {workspace = true}
-syn = {workspace = true}
-{% else if crate_type_deep == "workspace-root" %}
-
-[workspace.dependencies]
+quote = "1"
 {% endif %}
 
 [package.metadata.docs.rs]
