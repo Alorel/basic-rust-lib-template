@@ -45,6 +45,20 @@ jobs:
           components: rustfmt,clippy
       - name: Fmt
         run: cargo fmt --check
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-${{ hashFiles('**/Cargo.lock') }}-lint-
+          restore-keys: |
+            v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-${{ hashFiles('**/Cargo.lock') }}-test
+            v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-
+            v2-cargo-${{runner.os}}
       - name: Clippy
         run: clippy --workspace --tests --all-features
       - name: Install cargo-rdme
@@ -83,8 +97,11 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: v1-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: v1-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-
+          key: v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-${{ hashFiles('**/Cargo.lock') }}-test-
+          restore-keys: |
+            v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-${{ hashFiles('**/Cargo.lock') }}-lint
+            v2-cargo-${{runner.os}}-${{steps.toolchain.outputs.cachekey}}-
+            v2-cargo-${{runner.os}}
       - name: Build
         run: cargo build --workspace --tests --locked --all-features
       - name: Test
