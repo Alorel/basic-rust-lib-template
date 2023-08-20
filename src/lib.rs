@@ -7,7 +7,7 @@
 #![warn(clippy::complexity, clippy::perf, clippy::style, clippy::pedantic)]
 
 // #![warn(missing_docs)]
-#![cfg_attr(doc_cfg, feature(doc_cfg))]
+#![cfg_attr(doc_cfg, feature(doc_cfg, doc_auto_cfg))]
 
 {% if proc_macro %}
 use proc_macro::TokenStream as BaseTokenStream;

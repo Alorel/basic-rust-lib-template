@@ -28,16 +28,16 @@ proc-macro = true
 [features]
 
 [dependencies]
-{% if proc_macro and workspace and within_cargo_project %}
+{% if crate_type == "lib" and proc_macro and workspace and within_cargo_project %}
 proc-macro2 = {workspace = true}
 syn = {workspace = true}
 quote = {workspace = true}
-{% else if proc_macro and workspace == false %}
+{% else if crate_type == "lib" and proc_macro and workspace == false %}
 proc-macro2 = "1"
 syn = "2"
 quote = "1"
 {% endif %}
-{% if proc_macro and workspace and within_cargo_project == false %}
+{% if crate_type == "lib" and proc_macro and workspace and within_cargo_project == false %}
 [workspace.dependencies]
 proc-macro2 = "1"
 syn = "2"
