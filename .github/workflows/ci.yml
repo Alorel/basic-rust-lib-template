@@ -46,7 +46,7 @@ jobs:
       - name: Fmt
         run: cargo fmt --check
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/bin/
@@ -89,7 +89,7 @@ jobs:
         with:
           toolchain: ${{matrix.toolchain}}
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/bin/
