@@ -2,6 +2,9 @@
   <configuration default="false" name="Doc" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
     <option name="command" value="doc --all-features --no-deps" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+    <envs>
+      <env name="RUSTDOCFLAGS" value="--cfg doc_cfg -Wmissing_docs" />
+    </envs>
     <option name="emulateTerminal" value="true" />
     <option name="channel" value="NIGHTLY" />
     <option name="requiredFeatures" value="true" />
@@ -9,9 +12,6 @@
     <option name="withSudo" value="false" />
     <option name="buildTarget" value="REMOTE" />
     <option name="backtrace" value="SHORT" />
-    <envs>
-      <env name="RUSTDOCFLAGS" value="--cfg doc_cfg" />
-    </envs>
     <option name="isRedirectInput" value="false" />
     <option name="redirectInputPath" value="" />
     <method v="2">

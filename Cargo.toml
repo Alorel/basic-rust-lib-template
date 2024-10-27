@@ -1,48 +1,22 @@
 [package]
-name = "{{crate_name}}"
-version = "0.1.0"
+name = "XXXCRATE_NAMEXXX"
+version = "0.0.0"
 edition = "2021"
-publish = false
-rust-version = "{{rust_version}}"
+rust-version = "1.75.0"
 authors = [
-  "{{authors}}",
+  "Alorel <amolc@pm.me>",
 ]
 license = "Apache-2.0"
 readme = "README.md"
-{% if description == "<<fill later>>" %}
-#description = "TODO"
-{% else %}
-description = "{{ description }}"
-{% endif %}
-repository = "https://github.com/{{github_name}}/{{crate_name}}-rs"
+description = "XXXCRATE_DESCXXX"
+repository = "https://github.com/Alorel/XXXGH_REPOXXX"
 keywords = []
 categories = []
 include = [
   "src/",
   "Cargo.toml",
 ]
-{% if proc_macro and within_cargo_project or workspace == false %}
-[lib]
-proc-macro = true
-{% endif %}
-[features]
 
-[dependencies]
-{% if crate_type == "lib" and proc_macro and workspace and within_cargo_project %}
-proc-macro2 = {workspace = true}
-syn = {workspace = true}
-quote = {workspace = true}
-{% else if crate_type == "lib" and proc_macro and workspace == false %}
-proc-macro2 = "1"
-syn = "2"
-quote = "1"
-{% endif %}
-{% if crate_type == "lib" and proc_macro and workspace and within_cargo_project == false %}
-[workspace.dependencies]
-proc-macro2 = "1"
-syn = "2"
-quote = "1"
-{% endif %}
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = [

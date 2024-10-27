@@ -1,0 +1,78 @@
+name: Release (GitHub)
+concurrency: release-git
+on:
+  workflow_dispatch: { }
+
+permissions:
+  contents: read
+
+env:
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  git:
+    name: Git release
+    runs-on: ubuntu-latest
+    environment: github
+    permissions:
+      contents: write
+    outputs:
+      issues-closed: ${{ steps.changelog.outputs.issues-closed }}
+      version: ${{ steps.changelog.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Git identity
+        uses: alorel-actions/git-ident@v1
+
+      - name: Generate changelog
+        id: changelog
+        uses: ./.github/actions/changelog
+
+      - name: Init toolchain
+        uses: alorel-actions/cargo/init@v2
+        with:
+          cache-prefix: release
+
+      - name: cargo-bump
+        uses: alorel-actions/cargo/bump@v2
+        with:
+          release-type: ${{ steps.changelog.outputs.release-type }}
+
+      - name: Git release
+        uses: alorel-actions/cargo/release-git@v2
+        with:
+          version: ${{ steps.changelog.outputs.version }}
+          changelog: ${{ steps.changelog.outputs.changelog }}
+
+  notify:
+    name: Notify closed issues
+    needs:
+      - git
+    if: ${{ needs.git.outputs.issues-closed }}
+    runs-on: ubuntu-latest
+    environment: github
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Git identity
+        uses: alorel-actions/git-ident@v1
+
+      - name: Notify
+        if: ${{ needs.git.outputs.issues-closed }}
+        uses: alorel-actions/semantic-release-lite/notify@v0
+        with:
+          tag: ${{ needs.git.outputs.version }}
+          issues: ${{ needs.git.outputs.issues-closed }}
+          allow-out-of-sync: true
+          gh-token: ${{ secrets.GH_TOKEN }}
