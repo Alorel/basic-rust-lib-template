@@ -5,14 +5,16 @@ version: 2
 updates:
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
+    assignees: [Alorel]
     schedule:
       interval: "weekly"
     commit-message:
       prefix: deps
       prefix-development: "deps(dev)"
-  
+
   - package-ecosystem: "cargo"
     directory: "/"
+    assignees: [Alorel]
     schedule:
       interval: "weekly"
     commit-message:
