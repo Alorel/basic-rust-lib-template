@@ -11,7 +11,7 @@ Keep in mind that every commit message will show up as an entry in the changelog
 The commit message format is `type: Message`, e.g.
 `fix: Fixed new database connections sometimes sending a declaration of war to a foreign nation`. An up-to-date list of
 commit types can be found in the
-[changelog action](https://github.com/Alorel/rust-indexed-db/blob/master/.github/actions/changelog/action.yml#L39).
+[changelog action](https://github.com/Alorel/XXXGH_REPOXXX/blob/master/.github/actions/changelog/action.yml#L39).
 
 In order for your commit to close an issue on merge and show up as the commit that resolved the issue in the changelog,
 add a blank line followed by `Closes #issue_number` to your commit message, e.g.:
