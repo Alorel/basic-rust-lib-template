@@ -10,7 +10,7 @@ on:
       - .github/dependabot.yml
       - .github/FUNDING.yml
       - .github/workflows/release.yml
-      - LICENSE
+      - ../../LICENSE-APACHE
       - .gitignore
   pull_request:
     paths-ignore:
@@ -19,7 +19,7 @@ on:
       - .github/dependabot.yml
       - .github/FUNDING.yml
       - .github/workflows/release.yml
-      - LICENSE
+      - ../../LICENSE-APACHE
       - .gitignore
 
 permissions:

@@ -5,6 +5,4 @@
 //! [![Coverage Status](https://coveralls.io/repos/github/Alorel/XXXGH_REPOXXX/badge.svg?branch=master)](https://coveralls.io/github/Alorel/XXXGH_REPOXXX?branch=master)
 //! [![dependencies badge](https://img.shields.io/librariesio/release/cargo/XXXCRATE_NAMEXXX)](https://libraries.io/cargo/XXXCRATE_NAMEXXX)
 
-#![deny(clippy::correctness, clippy::suspicious)]
-#![warn(clippy::complexity, clippy::perf, clippy::style, clippy::pedantic)]
 #![cfg_attr(doc_cfg, feature(doc_auto_cfg))]

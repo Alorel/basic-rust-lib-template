@@ -1,3 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+  ".",
+]
+
+# PACKAGE CONFIGS
+
 [package]
 name = "XXXCRATE_NAMEXXX"
 version = "0.0.0"
@@ -6,7 +14,7 @@ rust-version = "1.75.0"
 authors = [
   "Alorel <amolc@pm.me>",
 ]
-license = "Apache-2.0"
+license = "MIT OR Apache-2.0"
 readme = "README.md"
 description = "XXXCRATE_DESCXXX"
 repository = "https://github.com/Alorel/XXXGH_REPOXXX"
@@ -17,11 +25,30 @@ include = [
   "Cargo.toml",
 ]
 
-[package.metadata.docs.rs]
+[package.metadata]
+workspace = true
+
+[lints]
+workspace = true
+
+# WORKSPACE CONFIGS
+
+[workspace.metadata.docs.rs]
 all-features = true
 rustdoc-args = [
   "--cfg",
   "doc_cfg",
 ]
+
+[workspace.lints.rust]
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(doc_cfg)'] }
+
+[workspace.lints.clippy]
+correctness = { level = "deny", priority = -1 }
+suspicious = { level = "deny", priority = -1 }
+perf = { level = "deny", priority = -1 }
+complexity = { level = "warn", priority = -1 }
+style = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

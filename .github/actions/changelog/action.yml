@@ -51,6 +51,9 @@ runs:
           deps: Dependency updates
           refactor: Refactors
           docs: Documentation
+          ux: UX
         trivial-types: |
           ci: CI & Build
           build: CI & Build
+          test: Testing
+          tests: Testing

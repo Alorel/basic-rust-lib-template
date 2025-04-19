@@ -4,3 +4,13 @@ XXXCRATE_DESCXXX
 [![crates.io badge](https://img.shields.io/crates/v/XXXCRATE_NAMEXXX)](https://crates.io/crates/XXXCRATE_NAMEXXX)
 [![Coverage Status](https://coveralls.io/repos/github/Alorel/XXXGH_REPOXXX/badge.svg?branch=master)](https://coveralls.io/github/Alorel/XXXGH_REPOXXX?branch=master)
 [![dependencies badge](https://img.shields.io/librariesio/release/cargo/XXXCRATE_NAMEXXX)](https://libraries.io/cargo/XXXCRATE_NAMEXXX)
+
+-----
+
+<details><summary>Initial repo setup:</summary>
+
+1. Replace `XXXCRATE_NAMEXXX`
+2. Replace `XXXCRATE_DESCXXX`
+3. Replace `XXXGH_REPOXXX`
+
+</details>
